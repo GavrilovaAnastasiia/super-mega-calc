@@ -1,0 +1,909 @@
+object Form1: TForm1
+  Left = 353
+  Height = 918
+  Top = 3
+  Width = 902
+  Caption = 'Калькулятор'
+  ClientHeight = 918
+  ClientWidth = 902
+  OnCreate = FormCreate
+  ShowHint = True
+  LCLVersion = '3.0.0.3'
+  object Edit1: TEdit
+    Left = 16
+    Height = 28
+    Top = 24
+    Width = 194
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -15
+    Font.Name = 'Segoe UI Symbol'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 0
+    OnChange = Edit1Change
+  end
+  object Button1: TButton
+    Left = 16
+    Height = 34
+    Top = 96
+    Width = 34
+    Caption = '1'
+    TabOrder = 1
+    OnClick = ClickBut
+  end
+  object Button2: TButton
+    Left = 56
+    Height = 34
+    Top = 96
+    Width = 34
+    Caption = '2'
+    TabOrder = 2
+    OnClick = ClickBut
+  end
+  object Button3: TButton
+    Left = 96
+    Height = 34
+    Top = 96
+    Width = 34
+    Caption = '3'
+    TabOrder = 3
+    OnClick = ClickBut
+  end
+  object Button4: TButton
+    Left = 16
+    Height = 34
+    Top = 136
+    Width = 34
+    Caption = '4'
+    TabOrder = 4
+    OnClick = ClickBut
+  end
+  object Button5: TButton
+    Left = 56
+    Height = 34
+    Top = 136
+    Width = 34
+    Caption = '5'
+    TabOrder = 5
+    OnClick = ClickBut
+  end
+  object Button6: TButton
+    Left = 96
+    Height = 34
+    Top = 136
+    Width = 34
+    Caption = '6'
+    TabOrder = 6
+    OnClick = ClickBut
+  end
+  object Button7: TButton
+    Left = 17
+    Height = 34
+    Top = 176
+    Width = 34
+    Caption = '7'
+    TabOrder = 7
+    OnClick = ClickBut
+  end
+  object Button8: TButton
+    Left = 56
+    Height = 34
+    Top = 176
+    Width = 34
+    Caption = '8'
+    TabOrder = 8
+    OnClick = ClickBut
+  end
+  object Button9: TButton
+    Left = 96
+    Height = 34
+    Top = 176
+    Width = 34
+    Caption = '9'
+    TabOrder = 9
+    OnClick = ClickBut
+  end
+  object Button10: TButton
+    Left = 17
+    Height = 34
+    Top = 216
+    Width = 73
+    Caption = '0'
+    TabOrder = 10
+    OnClick = ClickBut
+  end
+  object Button11: TButton
+    Left = 17
+    Height = 26
+    Hint = 'Нажми, если хочешь сделать число со знаком минус'
+    Top = 64
+    Width = 193
+    Caption = 'Число отрицательное'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 11
+    OnClick = Button11Click
+  end
+  object Button12: TButton
+    Left = 96
+    Height = 34
+    Top = 216
+    Width = 34
+    Caption = ','
+    TabOrder = 12
+    OnClick = ClickBut
+  end
+  object Button13: TButton
+    Left = 176
+    Height = 34
+    Hint = 'Стереть цифру'
+    Top = 96
+    Width = 34
+    Caption = '<-'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 13
+    OnClick = Button13Click
+  end
+  object Button14: TButton
+    Left = 176
+    Height = 34
+    Hint = 'Нажми сюда, если хочешь написать другой пример'
+    Top = 136
+    Width = 34
+    Caption = 'C'
+    Color = clNone
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 14
+    OnClick = Button14Click
+  end
+  object Button15: TButton
+    Left = 176
+    Height = 74
+    Top = 176
+    Width = 34
+    Caption = '='
+    TabOrder = 15
+    OnClick = Button15Click
+  end
+  object Button17: TButton
+    Left = 136
+    Height = 34
+    Top = 96
+    Width = 34
+    Caption = '+'
+    TabOrder = 16
+    OnClick = ClickZnak
+  end
+  object Button18: TButton
+    Left = 136
+    Height = 34
+    Top = 136
+    Width = 34
+    Caption = '-'
+    TabOrder = 17
+    OnClick = ClickZnak
+  end
+  object Button19: TButton
+    Left = 136
+    Height = 34
+    Top = 176
+    Width = 34
+    Caption = '*'
+    TabOrder = 18
+    OnClick = ClickZnak
+  end
+  object Button20: TButton
+    Left = 136
+    Height = 34
+    Top = 216
+    Width = 34
+    Caption = '/'
+    TabOrder = 19
+    OnClick = ClickZnak
+  end
+  object Label1: TLabel
+    Left = 397
+    Height = 1
+    Top = -20
+    Width = 1
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object StaticText1: TStaticText
+    Left = 384
+    Height = 24
+    Top = 24
+    Width = 288
+    Caption = 'Операция'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -19
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+    TabOrder = 20
+    Visible = False
+  end
+  object StaticText2: TStaticText
+    Left = 222
+    Height = 25
+    Hint = 'Число выводится в формате IEE754'#13#10' Помни, что у мантиссы отсутствует одна единица'#13#10' а порядок выводится со смещением 127'
+    Top = 120
+    Width = 232
+    BidiMode = bdRightToLeft
+    Caption = '1ое число будет здесь'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 21
+    Visible = False
+  end
+  object Edit2: TEdit
+    Left = 471
+    Height = 23
+    Top = 120
+    Width = 313
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 22
+    Visible = False
+  end
+  object Label2: TLabel
+    Left = 472
+    Height = 21
+    Top = 93
+    Width = 34
+    Caption = 'Знак'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label3: TLabel
+    Left = 528
+    Height = 21
+    Top = 93
+    Width = 68
+    Caption = 'Порядок'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label4: TLabel
+    Left = 656
+    Height = 21
+    Top = 93
+    Width = 73
+    Caption = 'Мантисса'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object StaticText3: TStaticText
+    Left = 222
+    Height = 25
+    Hint = 'Число выводится в формате IEE754.'
+    Top = 224
+    Width = 232
+    BidiMode = bdRightToLeft
+    Caption = '  2ое число будет здесь'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 23
+    Visible = False
+  end
+  object Edit3: TEdit
+    Left = 471
+    Height = 23
+    Top = 224
+    Width = 313
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 24
+    Visible = False
+  end
+  object Label5: TLabel
+    Left = 472
+    Height = 21
+    Top = 197
+    Width = 34
+    Caption = 'Знак'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label6: TLabel
+    Left = 528
+    Height = 21
+    Top = 197
+    Width = 68
+    Caption = 'Порядок'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label7: TLabel
+    Left = 656
+    Height = 21
+    Top = 197
+    Width = 73
+    Caption = 'Мантисса'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object StaticText4: TStaticText
+    Left = 16
+    Height = 25
+    Hint = 'Выводится число, преобразованное согласно алгоритму'
+    Top = 355
+    Width = 438
+    BidiMode = bdRightToLeft
+    Caption = 'Первое число преобразованное'
+    Color = 11206613
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 25
+    Visible = False
+  end
+  object Edit4: TEdit
+    Left = 471
+    Height = 23
+    Top = 355
+    Width = 313
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 26
+    Visible = False
+  end
+  object Label8: TLabel
+    Left = 472
+    Height = 21
+    Top = 328
+    Width = 34
+    Caption = 'Знак'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label9: TLabel
+    Left = 528
+    Height = 21
+    Top = 328
+    Width = 68
+    Caption = 'Порядок'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label10: TLabel
+    Left = 656
+    Height = 21
+    Top = 328
+    Width = 73
+    Caption = 'Мантисса'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object StaticText5: TStaticText
+    Left = 16
+    Height = 25
+    Hint = 'Выводится число, преобразованное согласно алгоритму'
+    Top = 456
+    Width = 438
+    BidiMode = bdRightToLeft
+    Caption = 'Второе число преобразованное'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 27
+    Visible = False
+  end
+  object Edit5: TEdit
+    Left = 471
+    Height = 23
+    Top = 459
+    Width = 313
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 28
+    Visible = False
+  end
+  object Label11: TLabel
+    Left = 472
+    Height = 21
+    Top = 432
+    Width = 34
+    Caption = 'Знак'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label12: TLabel
+    Left = 528
+    Height = 21
+    Top = 432
+    Width = 68
+    Caption = 'Порядок'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label13: TLabel
+    Left = 656
+    Height = 21
+    Top = 432
+    Width = 73
+    Caption = 'Мантисса'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object StaticText6: TStaticText
+    Left = 384
+    Height = 25
+    Hint = 'Сложение/вычитание: выбирается наибольший порядок'#13#10'Умножение: порядки складываются'#13#10'Деление: порядки вычитаются'
+    Top = 272
+    Width = 279
+    Caption = 'Шаг 1'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 29
+    Visible = False
+  end
+  object StaticText7: TStaticText
+    Left = 248
+    Height = 25
+    Top = 584
+    Width = 206
+    BidiMode = bdRightToLeft
+    Caption = 'Результат'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    TabOrder = 30
+    Visible = False
+  end
+  object Edit6: TEdit
+    Left = 472
+    Height = 23
+    Top = 587
+    Width = 313
+    DoubleBuffered = True
+    ParentBidiMode = False
+    ParentDoubleBuffered = False
+    ReadOnly = True
+    TabOrder = 31
+    Visible = False
+  end
+  object Label14: TLabel
+    Left = 473
+    Height = 21
+    Top = 560
+    Width = 34
+    Caption = 'Знак'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label15: TLabel
+    Left = 529
+    Height = 21
+    Top = 560
+    Width = 68
+    Caption = 'Порядок'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label16: TLabel
+    Left = 657
+    Height = 21
+    Top = 560
+    Width = 73
+    Caption = 'Мантисса'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object StaticText8: TStaticText
+    Left = 248
+    Height = 25
+    Top = 664
+    Width = 206
+    BidiMode = bdRightToLeft
+    Caption = '  :Результат в 10 СС'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    TabOrder = 32
+    Visible = False
+  end
+  object Edit7: TEdit
+    Left = 480
+    Height = 29
+    Top = 664
+    Width = 160
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentBidiMode = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 33
+    Visible = False
+  end
+  object StaticText9: TStaticText
+    Left = 384
+    Height = 25
+    Top = 520
+    Width = 310
+    Caption = 'Шаг 2'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+    TabOrder = 34
+    Visible = False
+  end
+  object StaticText10: TStaticText
+    Left = 248
+    Height = 25
+    Top = 736
+    Width = 206
+    BidiMode = bdRightToLeft
+    Caption = ' :Результат в 16 СС'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    TabOrder = 35
+    Visible = False
+  end
+  object Edit9: TEdit
+    Left = 480
+    Height = 29
+    Top = 736
+    Width = 104
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentBidiMode = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 36
+    Visible = False
+  end
+  object Edit8: TEdit
+    Left = 664
+    Height = 23
+    Top = 274
+    Width = 56
+    ReadOnly = True
+    TabOrder = 37
+    Visible = False
+  end
+  object Label17: TLabel
+    Left = 500
+    Height = 21
+    Top = 225
+    Width = 34
+    Caption = 'Знак'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label18: TLabel
+    Left = 318
+    Height = 21
+    Hint = 'Флаг переноса, в нем фиксируется '#13#10'перенос из старшего разряда при сложении '#13#10'и заем в старший разряд при вычитании'
+    Top = 848
+    Width = 18
+    Caption = 'CF'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object StaticText11: TStaticText
+    Left = 336
+    Height = 33
+    Hint = 'Позволяют нам отследить внутренние состояния процессора'
+    Top = 800
+    Width = 160
+    BidiMode = bdRightToLeftReadingOnly
+    Caption = 'Флаги операций'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = '@Malgun Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold, fsItalic]
+    ParentBidiMode = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 38
+    Visible = False
+    OnClick = StaticText11Click
+  end
+  object Label19: TLabel
+    Left = 366
+    Height = 21
+    Hint = 'Одно из чисел ноль'
+    Top = 848
+    Width = 17
+    Caption = 'ZF'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    Visible = False
+  end
+  object Label21: TLabel
+    Left = 410
+    Height = 21
+    Hint = 'Флаг вспомогательного переноса'
+    Top = 848
+    Width = 19
+    Caption = 'AF'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label22: TLabel
+    Left = 458
+    Height = 21
+    Hint = 'Флаг знака результата'
+    Top = 848
+    Width = 17
+    Caption = 'SF'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object Label23: TLabel
+    Left = 494
+    Height = 21
+    Hint = 'Произошло переполнение при переводе.'#13#10'Результат неверный.'
+    Top = 848
+    Width = 20
+    Caption = 'OF'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Semibold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    Visible = False
+  end
+  object Edit10: TEdit
+    Left = 312
+    Height = 23
+    Top = 872
+    Width = 24
+    BidiMode = bdRightToLeftReadingOnly
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 39
+    Visible = False
+  end
+  object Edit11: TEdit
+    Left = 359
+    Height = 23
+    Top = 872
+    Width = 24
+    BidiMode = bdRightToLeftReadingOnly
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 40
+    Visible = False
+  end
+  object Edit13: TEdit
+    Left = 405
+    Height = 23
+    Top = 872
+    Width = 24
+    BidiMode = bdRightToLeftReadingOnly
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 41
+    Visible = False
+  end
+  object Edit14: TEdit
+    Left = 451
+    Height = 23
+    Top = 872
+    Width = 24
+    BidiMode = bdRightToLeftReadingOnly
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 42
+    Visible = False
+  end
+  object Edit15: TEdit
+    Left = 494
+    Height = 23
+    Top = 872
+    Width = 24
+    BidiMode = bdRightToLeftReadingOnly
+    ParentBidiMode = False
+    ReadOnly = True
+    TabOrder = 43
+    Visible = False
+  end
+end
